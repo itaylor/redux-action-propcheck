@@ -1,0 +1,33 @@
+{
+  "name": "redux-action-propcheck",
+  "version": "0.0.1",
+  "description": "A redux middleware to check action property types.",
+  "main": "dist/index.js",
+  "repository": "github:itaylor/redux-action-propcheck",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -r qunit-mocha-ui --ui qunit-mocha-ui --compilers js:babel/register"
+  },
+  "keywords": [
+    "redux",
+    "middleware",
+    "type",
+    "action",
+    "type check",
+    "proptype",
+    "property check"
+  ],
+  "author": "ian.b.taylor@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.3.0",
+    "mocha": "^2.3.3",
+    "qunit-mocha-ui": "0.0.5",
+    "react": "^0.14.3",
+    "redux": "^3.0.3"
+  }
+}
