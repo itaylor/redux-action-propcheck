@@ -10,7 +10,6 @@ npm install --save redux-action-propcheck
 
 ### Example usage
 
-
 Client side:
 ```js
 import { createStore, applyMiddleware } from 'redux';
@@ -41,7 +40,14 @@ store.dispatch({type:'message', text:false});
 //[Error: Invalid undefined `text` of type `boolean` supplied to `message`, expected `string`.]
 ```
 
+### Options
 
+The second parameter of `createActionPropcheckMiddleware` allows for passing of options.
+
+* `strict` [boolean] default `true`
+  If true, requires that every action dispatched have propTypes specified in the actionSpec
+* `log` [function(err)] default `console.error`
+  A function that will be called when there is an error.  It will be passed an `Error` object with a message property containing the error message.
 
 
 ### MIT License
