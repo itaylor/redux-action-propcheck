@@ -60,7 +60,7 @@ function checkProps(propTypes, props, ownerName, logger) {
       logger(new Error('Attempted to use a propType ' + propName + 'that is not a function. Typically, use one from React.PropTypes.'));
       return;
     }
-    var error = fn(props, propName, ownerName);
+    var error = fn(props, propName, ownerName, 'prop');
     if (error) {
       logger(error);
     }
