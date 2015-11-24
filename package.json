@@ -1,6 +1,6 @@
 {
   "name": "redux-action-propcheck",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A redux middleware to check action property types.",
   "main": "dist/index.js",
   "repository": "github:itaylor/redux-action-propcheck",

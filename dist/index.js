@@ -19,13 +19,17 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports['default'] = createActionPropcheckMiddleware;
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
 function createActionPropcheckMiddleware() {
   var actionPropMap = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
   var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
   var defaultOptions = {
     strict: true,
-    log: console.log
+    log: function log(args) {
+      console.log.apply(console, _toConsumableArray(args));
+    }
   };
   options = Object.assign({}, defaultOptions, options);
 
@@ -49,16 +53,16 @@ function createActionPropcheckMiddleware() {
   };
 }
 
-function checkProps(propTypes, props, ownerName, log) {
+function checkProps(propTypes, props, ownerName, logger) {
   Object.keys(propTypes).forEach(function (propName) {
     var fn = propTypes[propName];
     if (typeof fn != 'function') {
-      log('Attempted to use a propType ' + propName + 'that is not a function. Typically, use one from React.PropTypes.');
+      logger(new Error('Attempted to use a propType ' + propName + 'that is not a function. Typically, use one from React.PropTypes.'));
       return;
     }
     var error = fn(props, propName, ownerName);
     if (error) {
-      log(error);
+      logger(error);
     }
   });
 }

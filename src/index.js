@@ -17,7 +17,7 @@ export default function createActionPropcheckMiddleware(
   options = {}){
   const defaultOptions = {
     strict:true,
-    log:console.log
+    log:(args)=>{console.log(...args)}
   }
   options = Object.assign({}, defaultOptions, options);
 
@@ -36,16 +36,16 @@ export default function createActionPropcheckMiddleware(
   }
 }
 
-function checkProps(propTypes, props, ownerName, log){
+function checkProps(propTypes, props, ownerName, logger){
   Object.keys(propTypes).forEach((propName)=>{
     const fn = propTypes[propName];
     if(typeof fn != 'function'){
-      log('Attempted to use a propType '+ propName  + 'that is not a function. Typically, use one from React.PropTypes.');
+      logger(new Error('Attempted to use a propType '+ propName  + 'that is not a function. Typically, use one from React.PropTypes.'));
       return;
     }
     const error = fn(props, propName, ownerName);
     if(error){
-      log(error);
+      logger(error);
     }
   });
 }
